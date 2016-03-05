@@ -42,7 +42,7 @@ $('button.login').click(function(){
 	var $btn = $(this),
 		provider = $btn.data('provider');
 
-	ref.authWithOAuthRedirect(provider, 
+	ref.authWithOAuthPopup(provider, 
 		function(error, authData) {
 			if (error) {
 			    toastr.error("Authentication Failed!", error);

@@ -10,6 +10,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.css">
+
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     </head>
     <body>
@@ -19,7 +21,7 @@
 
         <!-- Add your site or application content here -->
         <p>Hello world! This is HTML5 Boilerplate.</p>
-		
+		<button class="github">login with Github</button>
 		<div id='messagesDiv'></div>
         <input type='text' id='nameInput' placeholder='Name'>
     	<input type='text' id='messageInput' placeholder='Message'>
@@ -29,29 +31,11 @@
 
         <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.js"></script>
 
-        <script>
-        	var myDataRef = new Firebase('https://glaring-inferno-5854.firebaseio.com/');
 
-        	$('#messageInput').keypress(function (e) {
-		        if (e.keyCode == 13) {
-		          var name = $('#nameInput').val();
-		          var text = $('#messageInput').val();
-		          myDataRef.push({name: name, text: text});
-		          $('#messageInput').val('');
-		        }
-		    });
-
-		    myDataRef.on('child_added', function(snapshot) {
-				var message = snapshot.val();
-				displayChatMessage(message.name, message.text);
-				console.log(message);
-			});
-
-			function displayChatMessage(name, text) {
-		        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
-		        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-		    };
+        <script src="js/index.js">
+        	
 
         </script>
     </body>

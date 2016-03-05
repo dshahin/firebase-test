@@ -1,5 +1,6 @@
 var ref = new Firebase('https://glaring-inferno-5854.firebaseio.com/');
 
+var auth = ref.getAuth();
 
 ref.onAuth(onAuthCallback);
 ref.offAuth(onAuthCallback);
@@ -65,9 +66,9 @@ function onAuthCallback(authData){
 	    // save the user's profile into the database so we can list users,
 	    // use them in Security and Firebase Rules, and show profiles
 	    console.log("Authenticated user ", authData);
-	    if(authData.github){
+	    if(authData.github !== undefined){
 	    	$('#userIcon').attr({src : authData.github.profileImageURL}).show();
-	    }else if(authData.google){
+	    }else if(authData.google !== undefined){
 	    	$('#userIcon').attr({src : authData.google.profileImageURL}).show();
 	    }
 	    ref.child("users").child(authData.uid).set({

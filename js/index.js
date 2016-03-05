@@ -34,7 +34,7 @@ $('#messageInput').keypress(function (e) {
 
 $('button.logout').click(function(){
 	ref.unauth();
-	window.location = '/';
+	location.reload();
 });
 
 $('button.login').click(function(){
@@ -46,7 +46,7 @@ $('button.login').click(function(){
 			if (error) {
 			    toastr.error("Authentication Failed!", error);
 			} else {
-				window.location = '/';
+				location.reload();
 				// We'll never get here, as the page will redirect on success.
 			    // toastr.success("Authenticated to github" );
 			    // console.log('authData', authData);
